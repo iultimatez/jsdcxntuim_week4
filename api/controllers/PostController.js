@@ -64,9 +64,12 @@ module.exports = {
    list: function (req, res) {
 
     // Send a JSON response
-    return res.json({
-      hello: 'world'
+    return res.view("home/index", {
+      title: "home page - title"
     });
+    // return res.json({
+    //   hello: 'world'
+    // });
   },
 
 
@@ -77,7 +80,7 @@ module.exports = {
    get: function (req, res) {
 
     // Send a JSON response
-    return res.view("home/index");
+
   },
 
 

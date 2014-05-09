@@ -34,7 +34,7 @@ module.exports.routes = {
   // (This would also work if you had a file at: `/views/home.ejs`)
   '/': {
     controller: "post",
-    action: "get"
+    action: "list"
   },
 
   "GET /:controller/:action/:id?": {},
