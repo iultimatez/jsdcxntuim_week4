@@ -11,11 +11,11 @@ module.exports = {
   attributes: {
   	title: {
       type: 'string',
-      require: true
+      required: true
     },
     content: {
       type: 'string',
-      require: true
+      required: true
     }
   	/* e.g.
   	nickname: 'string'
