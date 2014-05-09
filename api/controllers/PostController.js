@@ -16,14 +16,14 @@
  */
 
 module.exports = {
-    
-  
+
+
   /**
    * Action blueprints:
    *    `/post/create`
    */
    create: function (req, res) {
-    
+
     // Send a JSON response
     return res.json({
       hello: 'world'
@@ -36,7 +36,7 @@ module.exports = {
    *    `/post/destroy`
    */
    destroy: function (req, res) {
-    
+
     // Send a JSON response
     return res.json({
       hello: 'world'
@@ -49,7 +49,7 @@ module.exports = {
    *    `/post/update`
    */
    update: function (req, res) {
-    
+
     // Send a JSON response
     return res.json({
       hello: 'world'
@@ -62,7 +62,7 @@ module.exports = {
    *    `/post/list`
    */
    list: function (req, res) {
-    
+
     // Send a JSON response
     return res.json({
       hello: 'world'
@@ -75,11 +75,9 @@ module.exports = {
    *    `/post/get`
    */
    get: function (req, res) {
-    
+
     // Send a JSON response
-    return res.json({
-      hello: 'world'
-    });
+    return res.view("home/index");
   },
 
 
@@ -91,5 +89,5 @@ module.exports = {
    */
   _config: {}
 
-  
+
 };
