@@ -23,20 +23,18 @@ module.exports = {
    *    `/post/form`
    */
 
-   form: function (req, res) {
-
-    // Send a JSON response
-    return res.view("home/create", {
-      title: "Create post",
-      post: { title: "", content: "", id: ""}
-    });
-  },
-
    create: function (req, res) {
 
     var title = req.body.title;
     var content = req.body.content;
 
+    if (! title || ! content) {
+      // Send a JSON response
+      return res.view("home/create", {
+        title: "Create post",
+        post: { title: "", content: "", id: ""}
+      });
+    }
     // Send a JSON response
     Post.create({
       title: title,
