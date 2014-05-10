@@ -23,18 +23,11 @@ module.exports = {
    *    `/post/form`
    */
 
-   create: function (req, res) {
+  create: function (req, res) {
 
     var title = req.body.title;
     var content = req.body.content;
 
-    if (! title || ! content) {
-      // Send a JSON response
-      return res.view("home/create", {
-        title: "Create post",
-        post: { title: "", content: "", id: ""}
-      });
-    }
     // Send a JSON response
     Post.create({
       title: title,
@@ -46,7 +39,7 @@ module.exports = {
 
       req.flash('info', 'info: Create post success !!!');
       res.redirect("/");
-    })
+    });
   },
 
 
@@ -62,6 +55,22 @@ module.exports = {
     });
   },
 
+   updatePage: function (req, res) {
+     var id = req.param("id");
+
+     Post.findOne({
+       id: id
+     }).done(function (err, post) {
+       if (err) {
+         req.flash("info", "info: you point to wrong number");
+         return res.redirect("/");
+       }
+       console.log(post)
+       return res.view("home/update", {
+         post: post
+       });
+     });
+   },
 
   /**
    * Action blueprints:
@@ -72,11 +81,6 @@ module.exports = {
     var title = req.body.title;
     var content = req.body.content
 
-    if (isNaN(id) && ! title && ! content) {
-      req.flash("info", "info: you point to wrong number");
-      return res.redirect("/");
-    }
-
     if (title && content && title.length > 0 && content.length > 0) {
       // update post
       Post.update({
@@ -86,22 +90,16 @@ module.exports = {
         content: content
       })
       .done(function (err, post) {
-        res.redirect("/post/get/" + post.id);
+        if (err) {
+          req.flash("info", "info: you point to wrong number");
+          return res.redirect("/");
+        }
+        return res.redirect("/post/get/" + post.id);
       })
-      return
+      return;
     }
+    return res.redirect("/");
 
-    // read post from db
-    Post.findOne({
-      id: id
-    })
-    .done(function (err, post) {
-      return res.view("home/create", {
-        post: post
-      });
-    });
-
-    //
     // // Send a JSON response
     // return res.json({
     //   hello: 'world'
@@ -121,15 +119,11 @@ module.exports = {
     .find({})
     .sort('updatedAt DESC')
     .done(function (err, posts) {
-      console.log(posts);
       return res.view("home/index", {
         title: "home page - title",
         posts: posts
       });
     });
-    // return res.json({
-    //   hello: 'world'
-    // });
   },
 
 
