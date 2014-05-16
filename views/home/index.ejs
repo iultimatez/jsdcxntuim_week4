@@ -1,18 +1,22 @@
 <div class="container">
   <header>
-    <h1>this is header</h1>
+    <h1>Welcome to the blog</h1>
   </header>
   <hr/>
   <nav>
-    <ul>
-      <li><a href="/">home</a></li>
-      <li><a href="/post/create">create</a></li>
-      <li><a href="/about">about</a></li>
+    <ul class="nav nav-pills">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/post/create">Create</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
   </nav>
+  <hr>
   <% if (info = req.flash("info")) { %>
   <div>
-    <%= info %>
+    <blockquote>
+      <%= info %>
+    </blockquote>
+
   </div>
   <% } %>
   <% posts.forEach(function(post, index) { %>
@@ -21,10 +25,12 @@
     <div class="content">
       <%= post.content %>
     </div>
+    <br>
     <div class="link">
-      <a href="/post/get/<%=post.id%>">link to <%=post.title%></a>
+      <a href="/post/get/<%=post.id%>"><span class="glyphicon glyphicon-chevron-right"></span> link to <%=post.title%></a>
     </div>
   </article>
   <hr>
   <% }); %>
+  
 </div>

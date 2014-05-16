@@ -2,18 +2,40 @@
   <header>
     <h1>Create post</h1>
   </header>
+
   <hr/>
-  <form action="/post" method="POST">
-    <div class="row">
-      <label for="title">Title<label>
-      <input id="title" type="text" name="title" value="" required>
+  <nav>
+    <ul class="nav nav-pills">
+      <li><a href="/">Home <span class="badge"></span></a></li>
+      <li class="active"><a href="/post/create">Create</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+        <form action="/post" method="POST">
+      <table class="table table-striped">
+        <tr>
+          <td><label for="title">Title<label></td>
+          <td><input class="form-control" id="title" type="text" name="title" value=""
+        <div class="row"></td>
+        </tr>
+        <tr>
+          <td><label for="content">Content<label></td>
+          <td><textarea name="content" id="content" required class="form-control" rows="3"></textarea></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> <input type="submit" name="submit-btn" value="Submit" class="btn btn-default"></td>
+        </tr>
+      </table>      
+       
+         
+
+      </form>
     </div>
-    <div class="row">
-      <label for="content">Content<label>
-      <textarea name="content" id="content" required></textarea>
-    </div>
-    <div class="row">
-      <input type="submit" name="submit-btn" value="Submit">
-    </div>
-  </form>
+    <div class="col-md-6"></div>
+  </div>
+    
 </div>

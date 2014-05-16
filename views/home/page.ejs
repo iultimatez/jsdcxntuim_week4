@@ -1,25 +1,44 @@
 <div class="container">
   <header>
-    <h1><%=post.title%></h1>
+    <h1>Content</h1>
   </header>
   <hr/>
   <nav>
-    <ul>
-      <li><a href="/">home</a></li>
-      <li><a href="/post/form">create</a></li>
-      <li><a href="/about">about</a></li>
+    <ul class="nav nav-pills">
+      <li><a href="/">Home <span class="badge"></span></a></li>
+      <li><a href="/post/create">Create</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
   </nav>
-  <article>
-    <div class="content">
-      <%= post.content %>
-    </div>
-    <div class="update">
-      <a href="/post/update/<%= post.id %>">update this</a>
-    </div>
-    <div class="updateDate">
-      <%= post.updatedAt %>
-    </div>
-  </article>
   <hr>
+  <h2><%=post.title%></h2>
+    <table class="table table-hover">
+      <tr>
+       
+          <td>
+          <%= post.content %>
+          </td>
+      </tr>
+      <tr>
+        
+          <td>
+          <a href="/post/update/<%= post.id %>"><span class="glyphicon glyphicon-pencil"></span>update this</a>
+          </td>
+      </tr>
+      <tr>
+        
+          <td>Latest update:
+          <%= post.updatedAt %>
+          </td>
+      </tr>
+      <tr>
+        
+          <td>
+          <form action="/post/delete/<%= post.id %>" method="POST">
+            <input type="submit" name="submit-btn" value="Delete" class="btn btn-danger">
+          </form>
+          </td>
+      </tr>
+    </table>
+<hr>
 </div>
