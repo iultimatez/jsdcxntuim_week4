@@ -57,6 +57,11 @@ module.exports.routes = {
     action: "create"
   },
 
+  "POST /signup": {
+    controller: "user",
+    action: "create"
+  },
+
   "POST /post/delete/:id": {
     controller: "post",
     action: "destroy"
